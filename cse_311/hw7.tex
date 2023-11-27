@@ -1,0 +1,221 @@
+%%%%%%%%%%%%%%%%%%%%% PACKAGE IMPORTS %%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{fullpage}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\algrenewcommand\textproc{} % \textsc is an alternative
+
+\usepackage[x11names, rgb]{xcolor}
+\usepackage{graphicx}
+% \usepackage{graphicx, wrapfig,fullpage}
+\usepackage{circuitikz} % tikz
+\usetikzlibrary{decorations,arrows,shapes}
+% Converts PDF viewer to dark mode (comment the below two lines to revert back before submitting HW)
+% \usepackage{xcolor} \pagecolor[rgb]{0,0,0} \color[rgb]{1,1,1} % Normal dark mode
+
+\usepackage{etoolbox}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{array}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+
+% Boxes text in a nice way
+\tcbset{
+    mybox/.style={
+        enhanced, % Enable advanced features
+        colframe=blue!10, % Border color
+        boxrule=0.5pt, % Border width
+        leftrule=0.5pt, % Left border width
+        rightrule=0.5pt, % Right border width
+        toprule=0.5pt, % Top border width
+        bottomrule=0.5pt, % Bottom border width
+        width=\linewidth,
+        enlarge left by=0mm,
+        boxsep=5pt,
+        arc=0pt,outer arc=0pt,
+        breakable,
+        sharp corners,
+    }
+}
+
+% Alternate: Boxes text with a blue border 
+% \tcbset{
+%     frame code={},
+%     colback=blue!10,
+%     leftrule=0.5pt,
+%     rightrule=0.5pt,
+%     toprule=0.5pt,
+%     bottomrule=0.5pt,
+%     width=\linewidth,
+%     enlarge left by=0mm,
+%     boxsep=5pt,
+%     arc=0pt,outer arc=0pt,
+%     breakable,
+%     colframe=white,
+%     sharp corners
+% }
+
+\hbadness=10000 % Underfull upperbound
+\hfuzz=95pt % Overfull upperbound
+
+%%%%%%%%%%%%%%%%%%%%%%%% QUESTION # %%%%%%%%%%%%%%%%%%%%%%%%
+%% This part helps number your questions and creates a    %%
+%% new page with each question for the aesthetics.        %%
+%% It also creates parts that helps you answer questions  %%
+%% To use do: \begin{question} ... \end{question}         %%
+%% and: \begin{part} ... \end{part}                       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+
+\providetoggle{questionnumbers}
+\settoggle{questionnumbers}{true}
+\newcommand{\noquestionnumbers}{
+    \settoggle{questionnumbers}{false}
+}
+
+\newcounter{questionCounter}
+\newenvironment{question}[2][\arabic{questionCounter}]{%
+    \addtocounter{questionCounter}{1}%
+    \ifnum\value{questionCounter}=1 {} \else {\newpage}\fi
+    \setcounter{partCounter}{0}%
+    \vspace{.25in} \hrule \vspace{0.5em}%
+        \noindent{\bf \iftoggle{questionnumbers}{Question #1: }{}#2}%
+    \vspace{0.8em} \hrule \vspace{.10in}%
+}
+
+\newcounter{partCounter}[questionCounter]
+\renewenvironment{part}[1][\alph{partCounter}]{%
+    \addtocounter{partCounter}{1}%
+    \vspace{.10in}%
+    \begin{indented}%
+       {\bf (#1)} %
+}{\end{indented}}
+
+\def\indented#1{\list{}{}\item[]}
+\let\indented=\endlist
+\def\show#1{\ifdefempty{#1}{}{#1\\}}
+
+%%%%%%%%%%%%%%%%%%%%%%%% SHORT CUTS %%%%%%%%%%%%%%%%%%%%%%%%
+%% This is just to improve your quality of life. Instead  %%
+%% of having to type long things, you can type short      %%
+%% things. Ex: \IMP instead of \rightarrow to get ->      %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\IMP{\rightarrow}
+\def\AND{\wedge}
+\def\OR{\vee}
+\def\BI{\leftrightarrow}
+\def\DIFF{\setminus}
+\def\SUB{\subseteq}
+\def\code#1{{\texttt{#1}}}
+\def\pred{\code}
+\newcommand{\trees}{\textbf{Trees}}
+\newcommand{\tree}{\textbf{Tree}}
+\newcommand{\height}{\operatorname{height}}
+\newcommand{\leaves}{\operatorname{leaves}}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\ds}{\displaystyle}
+
+\newcolumntype{C}{>{\centering\arraybackslash}m{1.5cm}}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\title{\vspace{-2cm}Homework 7: Structural Induction, Regexes, CFGs \vspace{-0.3cm}}
+\author{Collaborators: List collaborators here\vspace{-0.5cm}}
+% Don't put your name above so we don't have implicit bias when grading
+\date{\vspace{-0.3cm}\today\vspace{-1cm}}
+
+%%%%%%%%%%%%%%%%%%%%%%%% WORK BELOW %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+
+\begin{question}{Walk the walk, talk the talk [20 points]}
+    Let $S$ be a subset of $\mathbb{Z}\times \mathbb{Z}$ defined recursively as:
+
+    \textbf{Basis Step:} $(4,3) \in S$\\
+    \textbf{Recursive Step:} if $(a,b) \in S$ then $(a + 5, b + 7) \in S$ and $(a + 11, b + 8)\in S$
+
+    Prove that $\forall (a,b) \in S, a \leq 2b$.
+
+    \textbf{Hint}: Remember that with structural induction you must show $P(s)$ for every element $s$ that is added by the recursive rule -- you will need to show $P()$ holds for two different elements in your inductive step.
+
+    \textbf{Hint}: The inequality you're showing in your inductive step isn't always tight (that is it could be that $<$ is true, not just $\leq$), remember to keep your target in mind!
+\end{question}
+
+\begin{question}{Plants [23 points]}
+    You are playing an online plant-growing game with a friend. Your plant's health is represented by an ordered pair of two integer values $(w,n)$ where the first number represents how much additional water the plant requires, and the second represents how many additional nutrients it needs. The ideal state for a plant is at $(0,0)$. When it reaches this point, the plant bears fruit.\\
+    The plant starts off at some state $(k, k)$ and you and your friend take turns playing the game. In their turn, each player can either water the plant (decreasing the amount of water it needs) or apply manure (decreasing the amount of nutrients it needs), but a player can only do one of those two options (not both). The player gets to pick how much they affect the plant (but its state must change by at least $1$)
+
+    More formally, assuming you are at state $(a,b)$ you can move to any of the states: $(a, b-i)$ where $1 \leq i \leq b$ or $(a-j, b)$ where $1 \leq j \leq a$.
+
+    A player wins the game by being the one who causes the plant to hit $(0,0)$, as that player gets to collect all the fruit! You, generously, allow your friend to go first.
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Using induction, prove that in any plant growing game where the plant starts in state $(a,a)$ you (the player that goes second) can always win the game. \\
+              Be sure to explicitly and clearly define a predicate $P()$! We \textbf{strongly} recommend your predicate includes the phrase ``It is not my turn'' or ``the second player can'' or something similar.
+                  [20 points]
+
+        \item Describe your winning strategy (i.e. describe how you should play the game in order to win, assuming that you go first). A strategy would be something like ``If my friend friend waters the plant for $i$ units then I will...'' [3 points]
+    \end{enumerate}
+
+\end{question}
+
+\begin{question}{What doesn't kill you makes you stronger [24 points]}
+    In this problem, we'll use a technique called ``strengthened induction.'' The idea behind the technique is that sometimes the predicate, $P()$, that you want to prove isn't well-suited to induction. $P()$ might not have enough information so that when you use your inductive hypothesis you don't know enough to show $P(k+1)$. In cases like these, we will sometimes strengthen the predicate.
+
+    Consider the following recursively defined functions:
+
+    \[f(n) = \begin{cases}
+            3       & \text{if $n = 1$}                   \\
+            3f(n-1) & \text{if $n \in \mathbb{N}, n > 1$} \\
+        \end{cases}\]
+
+    \[g(n) = \begin{cases}
+            2           & \text{if $n = 1$}                   \\
+            3g(n-1) + 2 & \text{if $n \in \mathbb{N}, n > 1$}
+        \end{cases} \]
+
+    Let $P(n)$ be ``$g(n) < f(n)$''
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Imagine you wanted to prove $P(n)$ for all $n\in \mathbb{N}, n \geq 1$ by induction. Try for about 5-10 minutes to write an inductive proof and see where you get stuck. For this part, just write ``I spent about $X$ minutes trying'' (as long as you report an $X$ at least 5, you will get this point).  [1 point]
+
+        \item Give an example of numbers $a,b$ such that $a < b$ but $3a+2 \not< 3b$. [1 point]\\
+              \textbf{Hint:} You might want to choose non-integer numbers.
+
+              \begin{tcolorbox}
+                  Answer here
+              \end{tcolorbox}
+
+              Now imagine that for some number $m$, $f(m) = a$ and $g(m) = b$. If there were such a number $m$, it would be very hard to prove the inductive step of this proof! It would be impossible -- from your calculation in part b, $P(m+1)$ would be false then! This observation is an indication that our $P()$ isn't specific enough (or ``strong'' enough, as we'd usually say). Our $P()$ \textbf{is} true for the particular $f,g$ in this problem! But unless our $P()$ ``rules out'' the existence of that value $m$ we won't be able to write the proof.  Take a moment to ponder this observation -- it's the main point of this problem, but also somewhat mind-bending. (Don't write anything for this paragraph.)
+
+        \item Let's try to really prove the claim now. Define the predicate $Q(n)$ to be ``$g(n) \leq f(n) - 1$''. Explain why showing $Q(n)$ for all $n\geq 1$ will also show $P(n)$ for all $n\geq 1$ (1 sentence) [2 points]
+
+        \item Prove $Q(n)$ holds for all integers $n$, with $n\geq 1$ by induction. [20 points]
+
+        \item This proof technique is called ``strengthened induction'' (not to be confused with strong vs. weak induction).
+              We wanted to show $P()$, but $P()$ wasn't suitable for induction, the I.H. was not enough information to easily prove our target in the I.S.. We defined a strengthened claim, $Q()$. (we call $Q()$ ``stronger'' because once you know $Q()$ is true you also know $P()$ must be true).
+
+              Choosing what to add is a tradeoff -- the more information in $Q()$ that you add, the more information you have in your inductive hypothesis to assume. But also the more you have to show in your inductive step!
+              You do not have to write anything for this part. [0 point]
+    \end{enumerate}
+\end{question}
+
+\begin{question}{Relations [12 points]}
+    \begin{enumerate}[label=(\alph*)]
+        \item Define the relation $\prec$ on $\mathbb{Z}^+$ as follows: we will say $a \prec b$ if and only if $2a | b$.
+              Prove that the relation $\prec$ is transitive  [8 points]\\
+              If you're using LaTeX, the symbol in this problem is \texttt{$\backslash$prec}.\\
+              \textbf{Hint:} You know how to do this kind of proof! Look at the definition of transitive---it's a for-all statement with an implication inside. You've done tons of proofs like that!
+
+        \item Disprove the following statement: for all relations $R$, $S$: if $R$ and $S$ are antisymmetric relations on the same set $A$, then the relation $R \cup S$ is antisymmetric on the set $A$ as well. [4 Points]\\
+              \textbf{Hint:} Remember that relations are sets of ordered pairs! Since they're sets, we can do set operations (like union) on them. The combined relation has all pairs that are in $R$ or $S$ (or both)\\
+              \textbf{Hint:} You know how to do this kind of proof too! You're disproving a for-all. Remember to make your counter-example as specific as possible.
+    \end{enumerate}
+\end{question}
+
+\end{document}
