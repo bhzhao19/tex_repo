@@ -192,8 +192,45 @@
         \item Using induction, prove that in any plant growing game where the plant starts in state $(a,a)$ you (the player that goes second) can always win the game. \\
               Be sure to explicitly and clearly define a predicate $P()$! We \textbf{strongly} recommend your predicate includes the phrase ``It is not my turn'' or ``the second player can'' or something similar.
                   [20 points]
+        \begin{tcolorbox}
+            Proof by Strong induction: \\
+            The predicate we want to proof, $P(n)$, is that: for all positive integer $n$, if the plant is at the state $(n,n)$, the second player can always find a strategy to reach the state $(0,0)$ prior than the first player. \\ \\
+            \textbf{Base Case:} The base is at $n = 1$. And $P(1)$ will be: if the plant is at the state $(n,n)$, the second player can always find a strategy to reach the state $(0,0)$ prior than the first player.\\
+                In the base case, at the state $(1,1)$, by the game requirement, there are only two possible states that the first player can reach: he will either water the plant, which will 
+                reach $(1-j, 1)$ where $1 \leq j \leq 1$, where here $j$ can only be 1, which means that he can only reach $(0,1)$; or, he can choose to apply manure, which will reach 
+                $(1, 1-i)$ where $1 \leq i \leq 1$, which means that he can only reach $(1,0)$. \\
+                \textbf{Case 1:} If the first user choose to water the plant and reach $(0,1)$. By the requirement of the game, the second user can only apply manure to the plant, for there couldn't exist an 
+                integer $i$ such that $1\leq i \leq 0$. Since he can only choose to apply manure, and only manure once, he will finally reach the state $(0,0)$, prior to the first player. Thus, $P(1)$
+                is true in case 1.\\
+                \textbf{Case 2:} If the first user choose to apply manure to the plant and reach $(1,0)$. By the requirement of the game, the second user can only water the plant, for there couldn't exist an 
+                integer $j$ such that $1\leq j \leq 0$. Since he can only choose to water, and only water once, he will finally reach the state $(0,0)$, prior to the first player. Thus, $P(1)$
+                is true in case 2.\\
+                Since in both cases $P(1)$ is true, $P(1)$ holds. \\ \\
+            \textbf{Induction Hypothesis:} Suppose that $k$ is an integer and $k\geq 1$. $P(1)\land ...\land P(k)$ holds. \\
+            \textbf{Inductive step:} We want to proof that $P(k+1)$ is true. \\
+                In $P(k+1)$, the tree will be at the state of $(k+1,k+1)$. Here the first player has two strategy: he will either water/apply manure with the length of $k+1$, or water/apply manure
+                 with length $r\in \mathbb{N}$, where $r$ is in the range of $1\leq r\leq k$. \\
+                \textbf{Case 1:} If the first player choose to \textbf{water/apply manure} with the length of $k+1$, the tree will then be at the state of $(0,k+1)$ or $(k+1,0)$. Supposing that the second player is
+                really greedy on winning the game, and for either case above, the second player can \textbf{apply manure/water} with the length of $k+1$ corresponding to the another choice that player 1 doesn't choose. And for both 
+                cases, the second player can successfully reach the state $(0,0)$ prior then player one, thus, under such case, $P(k+1)$ is true. \\
+                \textbf{Case 2:} If the first player choose to \textbf{water/apply manure} with length $r\in \mathbb{N}$, where $r$ is in the range of $1\leq r\leq k$, the second player can also apply the strategy
+                of \textbf{apply manure/water} with length $r$ corresponding to the another choice that player 1 doesn't choose. Under such case, the second player can successfully change the state of the plant
+                back to $(k+1-r, k+1-r)$. Since $1\leq r\leq k$, $-1\geq -r\geq -k$, and $k+1-1\geq k+1-r\geq k+1-k$, which is the range $1\leq k+1-r\leq k$. And in the \textbf{IH}, we assume that $P(1)\land ...\land P(k)$ holds.
+                And the plant at state $(k+1-r, k+1-r)$ will be one of the induction hypothesis. 
+        \end{tcolorbox}
+        \begin{tcolorbox}
+            Since $P(k+1-r)$ holds in our hypothesis, $P(k+1)$ will be ture due to the reason that second player can find a way 
+                to reach $(0,0)$ state prior to first player. \\ \\
+            Thus, by strong induction we proof that for all positive integer $n$, if the plant is at the state $(n,n)$, the second player can always find a strategy to reach the state $(0,0)$ prior than the first player. \\
+            By using the theorm proved above, for any tree state $(a,a)$, the player that goes second (which is me!) will successfully win since I can always reach state $(0,0)$ prior to the first player.
+        \end{tcolorbox}
 
         \item Describe your winning strategy (i.e. describe how you should play the game in order to win, assuming that you go first). A strategy would be something like ``If my friend friend waters the plant for $i$ units then I will...'' [3 points]
+        \begin{tcolorbox}
+            The strategy is really simple to describe: \\
+            If my friend choose to water $n$ steps, then I will choose to apply manure $n$ steps; And if my friend choose to apply manure $n$ steps, then 
+            I will choose to water $n$ steps. ($n$ is an arbitrary integer number in the range of $\left[1 , a \right]$)
+        \end{tcolorbox}
     \end{enumerate}
 
 \end{question}
