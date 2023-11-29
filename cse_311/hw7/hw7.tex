@@ -65,7 +65,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%% QUESTION # %%%%%%%%%%%%%%%%%%%%%%%%
 %% This part helps number your questions and creates a    %%
-%% new page with each question for the aesthetics.        %%
+%% new page with each question for the aesthetics.        %
 %% It also creates parts that helps you answer questions  %%
 %% To use do: \begin{question} ... \end{question}         %%
 %% and: \begin{part} ... \end{part}                       %%
@@ -145,7 +145,38 @@
 
     \textbf{Hint}: The inequality you're showing in your inductive step isn't always tight (that is it could be that $<$ is true, not just $\leq$), remember to keep your target in mind!
     \begin{tcolorbox}
+        Proof by structural induction: \\
+        The proposition we want to proof, $P(s)$, is that: If $s = (x,y) \in S$, then $x \leq 2y$. \\
+
+        \textbf{Base Case:} There is only one base case, which is the basis step starting for the set $S$, where $s_0 = (4,3)$. \\
+        Under such case, $P(s_0)$ will be: $4\leq 2\cdot 3 = 6$. Thus we know that $P(s_0)$ is true.\\ 
+
+        Let $y$ be an arbitrary element of $S$ not covered by base case. By the exclusion rule, for all $x = (a,b)\in S$, $y = (a + 5, b + 7)$ or $y = (a + 11, b + 8)$. \\ \\
+
+
+        \textbf{Induction Hypothesis:} Suppose that $P(x)$ is true, which means that $a \leq 2b$ holds.
+        \textbf{Inductive step:} Then there will be two cases for $y\in S$: $y = (a + 5, b + 7)$ or $y = (a + 11, b + 8)$.
+        Case 1: if $y = (a + 5, b + 7)$. From the \textbf{IH}, we know that: $a - 2b \leq 0$.
+        \begin{align*}
+            (a+5) - 2(b+7) &= a-2b + 5 - 14 && \text{Algebra} \\
+            &= (a - 2b) - 9 && \text{Algebra} \\
+            &\leq 0 - 9 && \text{Replacement by the inequality in IH} \\
+            &= -9 && \text{Algebra} \\
+            &\leq 0 && \text{Algebra, inequality} 
+        \end{align*}
+        From the steps above, we can see that $(a+5) - 2(b+7) \leq 0$, which means that $(a+5) \leq 2(b+7)$. Thus, $P(y)$ holds for case 1. \\ \\
         
+        Case 2: if $y = (a + 11, b + 8)$. From the \textbf{IH}, we know that: $a - 2b \leq 0$.
+        \begin{align*}
+            (a+11) - 2(b+8) &= a-2b + 11 - 16 && \text{Algebra} \\
+            &= (a - 2b) - 5 && \text{Algebra} \\
+            &\leq 0 - 5 && \text{Replacement by the inequality in IH} \\
+            &= -5 && \text{Algebra} \\
+            &\leq 0 && \text{Algebra, inequality} 
+        \end{align*}
+        From the steps above, we can see that $(a+11) - 2(b+8) \leq 0$, which means that $(a+11) \leq 2(b+8)$. Thus, $P(y)$ holds for case 2.\\
+
+        Since in both case 1 and case 2, $P(y)$ is true if $P(x)$ holds. Thus, by structural induction, $P(s)$ holds for all $s\in S$.
     \end{tcolorbox}
 \end{question}
 
