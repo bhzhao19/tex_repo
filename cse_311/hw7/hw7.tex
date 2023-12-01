@@ -305,11 +305,25 @@
               If you're using LaTeX, the symbol in this problem is \texttt{$\backslash$prec}.\\
               \textbf{Hint:} You know how to do this kind of proof! Look at the definition of transitive---it's a for-all statement with an implication inside. You've done tons of proofs like that!
         \begin{tcolorbox}
-            Suppose that $a,b,c$ are arbitrary numbers in the set $\mathbb{Z}^+$, and $a\prec b$ and $b\prec c$.
+            Suppose that $a,b,c$ are arbitrary numbers in the set $\mathbb{Z}^+$, and $a\prec b$ and $b\prec c$. By the definition of relation
+            $\prec$, we can know that $2a|b$ and $2b|c$. Then, by the definition of divisibility, there exists integers $k_1,k_2$ such that
+            $b = 2a k_1$, and $c = 2bk_2$. By substituting b, we can see that $c = 2(2ak_1)bk_2 = (2bk_1k_2) 2a$. Since $b,k_1,k_2$ are integers, 
+            by the closure of integer we know that $2bk_1k_2$ is an integer. \\ \\
+            Since there exists an integer  $ 2bk_1k_2 $ such that $c = (2bk_1k_2) 2a$, by the integer divisibility, we can conclude that $2a|c$. And then
+            by the definition of $\prec$, we know that $a\prec c$. \\ \\
+            From the steps above, we proof that for all $a,b,c\in \mathbb{Z}^+$, if $a\prec b$ amd $b\prec c$, then $a \prec c$. Thus, the relation
+            $\prec$ on $\mathbb{Z}^+$ satisfied the transitivity.
         \end{tcolorbox}
         \item Disprove the following statement: for all relations $R$, $S$: if $R$ and $S$ are antisymmetric relations on the same set $A$, then the relation $R \cup S$ is antisymmetric on the set $A$ as well. [4 Points]\\
               \textbf{Hint:} Remember that relations are sets of ordered pairs! Since they're sets, we can do set operations (like union) on them. The combined relation has all pairs that are in $R$ or $S$ (or both)\\
               \textbf{Hint:} You know how to do this kind of proof too! You're disproving a for-all. Remember to make your counter-example as specific as possible.
+        \begin{tcolorbox}
+            Proof by counter example: \\
+            Suppoes that set $A = \{1,2\}$, set of relation $R = \{(1,2)\}$, and $S = \{(2,1)\}$. By the definition of antisymmetric, we can tell that
+            both the two relation $R$ and $S$ are antisymmetric, for if $1R2$, then $2R1$ must not hold. Similarly, if $2S1$, then $1S2$ must not hold.
+            However, the union set $R\cup S = \{(1,2),(2,1)\}$. And we can see that the union set $R\cup S$ is not an antisymmetric relationship on $A$,
+            since $1(R\cup S)2$ and $2(R\cup S)1$ holds simutanenously.
+        \end{tcolorbox}
     \end{enumerate}
 \end{question}
 
