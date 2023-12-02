@@ -1,0 +1,258 @@
+%%%%%%%%%%%%%%%%%%%%% PACKAGE IMPORTS %%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{fullpage}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\algrenewcommand\textproc{} % \textsc is an alternative
+
+\usepackage[x11names, rgb]{xcolor}
+\usepackage{graphicx}
+% \usepackage{graphicx, wrapfig,fullpage}
+\usepackage{circuitikz} % tikz
+\usetikzlibrary{decorations,arrows,shapes}
+% Converts PDF viewer to dark mode (comment the below two lines to revert back before submitting HW)
+% \usepackage{xcolor} \pagecolor[rgb]{0,0,0} \color[rgb]{1,1,1} % Normal dark mode
+
+\usepackage{etoolbox}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{array}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+
+% Boxes text in a nice way
+\tcbset{
+    mybox/.style={
+        enhanced, % Enable advanced features
+        colframe=blue!10, % Border color
+        boxrule=0.5pt, % Border width
+        leftrule=0.5pt, % Left border width
+        rightrule=0.5pt, % Right border width
+        toprule=0.5pt, % Top border width
+        bottomrule=0.5pt, % Bottom border width
+        width=\linewidth,
+        enlarge left by=0mm,
+        boxsep=5pt,
+        arc=0pt,outer arc=0pt,
+        breakable,
+        sharp corners,
+    }
+}
+
+% Alternate: Boxes text with a blue border 
+% \tcbset{
+%     frame code={},
+%     colback=blue!10,
+%     leftrule=0.5pt,
+%     rightrule=0.5pt,
+%     toprule=0.5pt,
+%     bottomrule=0.5pt,
+%     width=\linewidth,
+%     enlarge left by=0mm,
+%     boxsep=5pt,
+%     arc=0pt,outer arc=0pt,
+%     breakable,
+%     colframe=white,
+%     sharp corners
+% }
+
+\hbadness=10000 % Underfull upperbound
+\hfuzz=95pt % Overfull upperbound
+
+%%%%%%%%%%%%%%%%%%%%%%%% QUESTION # %%%%%%%%%%%%%%%%%%%%%%%%
+%% This part helps number your questions and creates a    %%
+%% new page with each question for the aesthetics.        %%
+%% It also creates parts that helps you answer questions  %%
+%% To use do: \begin{question} ... \end{question}         %%
+%% and: \begin{part} ... \end{part}                       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+
+\providetoggle{questionnumbers}
+\settoggle{questionnumbers}{true}
+\newcommand{\noquestionnumbers}{
+    \settoggle{questionnumbers}{false}
+}
+
+\newcounter{questionCounter}
+\newenvironment{question}[2][\arabic{questionCounter}]{%
+    \addtocounter{questionCounter}{1}%
+    \ifnum\value{questionCounter}=1 {} \else {\newpage}\fi
+    \setcounter{partCounter}{0}%
+    \vspace{.25in} \hrule \vspace{0.5em}%
+        \noindent{\bf \iftoggle{questionnumbers}{Question #1: }{}#2}%
+    \vspace{0.8em} \hrule \vspace{.10in}%
+}
+
+\newcounter{partCounter}[questionCounter]
+\renewenvironment{part}[1][\alph{partCounter}]{%
+    \addtocounter{partCounter}{1}%
+    \vspace{.10in}%
+    \begin{indented}%
+       {\bf (#1)} %
+}{\end{indented}}
+
+\def\indented#1{\list{}{}\item[]}
+\let\indented=\endlist
+\def\show#1{\ifdefempty{#1}{}{#1\\}}
+
+%%%%%%%%%%%%%%%%%%%%%%%% SHORT CUTS %%%%%%%%%%%%%%%%%%%%%%%%
+%% This is just to improve your quality of life. Instead  %%
+%% of having to type long things, you can type short      %%
+%% things. Ex: \IMP instead of \rightarrow to get ->      %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\IMP{\rightarrow}
+\def\AND{\wedge}
+\def\OR{\vee}
+\def\BI{\leftrightarrow}
+\def\DIFF{\setminus}
+\def\SUB{\subseteq}
+\def\code#1{{\texttt{#1}}}
+\def\pred{\code}
+\newcommand{\trees}{\textbf{Trees}}
+\newcommand{\tree}{\textbf{Tree}}
+\newcommand{\height}{\operatorname{height}}
+\newcommand{\leaves}{\operatorname{leaves}}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\ds}{\displaystyle}
+
+\newcolumntype{C}{>{\centering\arraybackslash}m{1.5cm}}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\title{\vspace{-2cm}Homework 8: Finite Automata; Fundamentals Review \vspace{-0.3cm}}
+\author{Collaborators: List collaborators here\vspace{-0.5cm}}
+% Don't put your name above so we don't have implicit bias when grading
+\date{\vspace{-0.3cm}\today\vspace{-1cm}}
+
+%%%%%%%%%%%%%%%%%%%%%%%% WORK BELOW %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+
+\begin{question}{Contrapositive [10 points]}
+    In this problem, you'll prove ``For all perfect squares $x$ (i.e., $x$ such that $\sqrt{x}$ is an integer): if $4$ does not divide $x$ then $\sqrt{x}$ is odd.''
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Write the contrapositive of the statement to be proven in English (be sure to explicitly mention any quantifiers). [2 points]
+
+              \begin{tcolorbox}
+                  Answer here
+              \end{tcolorbox}
+
+        \item Now do the proof; you must use proof by contrapositive for this problem. Be sure to explicitly mention your proof technique! [8 points]
+
+    \end{enumerate}
+\end{question}
+
+\begin{question}{Com-pair-isons [7 points]}
+    Let $\mathcal{A} = \{ S : S \subseteq \mathbb{N} \land |S| = 2\}$. I.e., an element of $\mathcal{A}$ is a set containing two natural numbers.
+
+    We define the relation $\succeq$ on $\mathcal{A}$ as follows.
+
+    Let $X = \{x_1, x_2\}$ with $x_1 < x_2$\\
+    Let $Y = \{y_1, y_2\}$ with $y_1 < y_2$
+
+    We will say $X \succeq Y$ if and only if $x_1 \geq y_1$ and $x_2 \geq y_2$.
+
+    In English, we say $X \succeq Y$ if and only if the smaller element of $Y$ is at most the smaller element of $X$ \textbf{and} the larger element of $Y$ is at most the larger element of $X$.
+
+
+    For example:
+    \begin{itemize}
+        \item $\{8, 11\} \succeq \{4,8\}$
+        \item $\{4, 16\} \not\succeq \{7, 9\}$ because $4 < 7$
+        \item $\{2, 32\} \succeq \{2, 6\}$
+        \item $\{7, 14\} \succeq \{11 , 2\}$ (we compare elements based on their sizes, not what order they are listed in).
+    \end{itemize}
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Prove that $\succeq$ is antisymmetric on $\mathcal{A}$. You may not use proof by contradiction for this problem. Remember to introduce arbitrary variables as arbitrary. [7 points]\\
+              \textbf{Hint:} Remember that we had two equivalent definitions of antisymmetry. The definition $\forall x \forall y ( [(x,y)\in R \land (y,x)\in R] \rightarrow x=y)$ is probably going to give you a cleaner proof than the other definition in this problem.
+
+              \textbf{Hint:} Please, when introducing a set, also name its elements. E.g. when you introduce $X$ also let $X=\{x_1,x_2\}$ for integers $x_1,x_2$, with $x_1 < x_2$. Your proof will be much easier to read and write this way.
+
+        \item Convince yourself that $\succeq$ is a partial order on $\mathcal{A}$ (you just showed antisymmetry; you should convince yourself of reflextivity and transitivity). You do not have to write anything for this part [0 point]
+    \end{enumerate}
+\end{question}
+
+\begin{question}{Build DFAs (Online) [15 points]}
+    Don't write anything here
+\end{question}
+
+\begin{question}{Build NFAs (Online) [15 points]}
+    Don't write anything here
+\end{question}
+
+\begin{question}{Primal Translations [10 points]}
+    We define a \textbf{cousin prime} as a prime number which is separated from another
+    prime number by a distance of only 4. For example, $3$ and $7$ are cousin primes.
+    Formally, we say an integer $x$ is a cousin prime if there exists a prime number $y$ such that $x-y=4$ or $y-x=4$.
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Define \texttt{COUSIN-PRIME(x)} in predicate logic by translating the formal definition above. Let your domain of discourse be integers, and let \texttt{PRIME(p)} be the predicate which is true iff $p$ is prime. You may use standard arithmetic notation (including $+,-, =, \leq,$ etc.) in all parts of this problem [2 points]
+
+        \item The \textbf{cousin prime conjecture} states that there are infinitely many cousin primes (it is not known to the 311 staff if the conjecture is true)\footnote{Showing infinite number of primes that differ by about 600 has been shown; we're willing to offer extra credit to anyone who can show the cousin prime conjecture. We'd also happily write and publish the paper with you.}. We can rephrase the
+              conjecture as follows: For any integer $N$, no matter how large, there always exists
+              a cousin prime larger than $N$. Write in predicate logic a proposition which is
+              true if and only if the \textbf{cousin prime conjecture} holds. Your answer should use your predicate from part (a). [2 points]
+
+        \item Negate the translation you wrote in part (b). Show your work, but leave your answers as symbols. You don't have to name rules as you use them. Your final answer must have negations applied only to single predicates. You do not need to simplify to ``take advantage of domain restriction.'' [3 points]
+
+        \item Translate your answer from (c) into English. You may \textbf{NOT} use the words \textit{finite} or \textit{infinite} or any variation of them. [3 points]
+    \end{enumerate}
+\end{question}
+
+\begin{question}{Proof By Contradiction [11 points]}
+    In this problem you'll show
+    
+    Claim: Subtracting a rational number from an irrational number always gives an irrational number.
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Translate the claim above into predicate logic. Let your domain of discourse be all real numbers. Use the predicate $\pred{R}(x)$ for "$x$ is rational". (note that ``$x$ is irrational'' is $\neg \pred{R}(x)$, so you don't need another predicate; you can use $-$ for subtraction).
+
+        \item Write the negation of the claim above in predicate logic.
+
+        \item Now, write an (English) proof of the claim. You must use proof by contradiction for this problem.
+    \end{enumerate}
+\end{question}
+
+\begin{question}{Prove a language is not regular [15 points]}
+    \emph{This problem uses the technique from Monday's lecture. You can look ahead at the slides or wait until Monday.}
+
+    Prove that the following language is not regular: The set of all strings over $\{0, 1, 2\}$ of the form $x2y$, with $x, y \in \{0, 1\}^*$ and $y$ is the reversal of $x$.
+
+    The ``reversal'' of a string, is the string going from right-to-left (instead of left-to-right). For example
+    \begin{itemize}
+        \item 0112110 is in the language.
+        \item 00001210000 is in the language.
+        \item 0122210 is not in the language (you can only have a single 2).
+        \item 0002000 is in the language.
+        \item 000200 is not in the language.
+    \end{itemize}
+
+\end{question}
+
+\begin{question}{Extra Credit: Going Back to the Well [0 point]}
+    In class, we'll use proof by contradiction as a method of showing languages are not regular. Another common way to prove languages are not regular is ``The Pumping Lemma.''
+
+    Formally, the pumping lemma says:
+    If $L$ is a regular language, then there exists an integer $p$ such that for all $w \in L$, if $\pred{len}(w) \geq p$, then there is a way to divide $w$ into substrings $x,y,z$ such that:
+    \begin{itemize}
+        \item $w=xyz$ (i.e. $x,y,z$ break $w$ into pieces)
+        \item $\pred{len}(xy) \leq p$
+        \item $\pred{len}(y) \geq 1$
+        \item $\forall i \in \mathbb{N}$, $xy^iz \in L$
+    \end{itemize}
+
+    The lemma says you can break any string of $L$ into pieces, where the ``middle'' piece is length at least $1$, such that you can ``pump'' the string $w$ by inserting extra copies of $y$ into the string while still having the new string also be in $L$
+
+    For some intuition: roughly, $p$ corresponds to the number of states in a hypothetical DFA for $L$. Once a string $w$ has more than $p$ characters, you have to have a cycle when the machine processes $w$, but then you could go around the cycle as many times as you want (including $0$ times) and still end up in the same accepting state at the end. So some $y$ in the string (what's read when you go around the cycle) could be duplicated any number of times and still be accepted. The difficulty of using the lemma to prove irregularity is we don't know which part of the string the cycle would be in (we're doing proof by contradiction -- the language is irregular, so there isn't even a DFA in real life!) so these proofs often have cases based on all the places $y$ could be in the string.
+
+    Use the pumping lemma to show $\{a^{311}b^nc^m : n=311+m\}$ is not regular. The hardest thing about using the pumping lemma is getting the quantifiers right (there are a lot of them...) make sure you're declaring and using the arbitrary variables as arbitrary, and saying what the existential variables are. Usually this proof is done by contradiction (suppose $L$ is regular and use the pumping lemma's guarantee to derive a contradiction) or contrapositive (show the conclusion of the pumping lemma does not hold, and apply the contrapositive to get that the language is not regular). You should feel free to look online or in the textbook for an example proof or two to get a sense of how they usually go.
+\end{question}
+
+\end{document}
