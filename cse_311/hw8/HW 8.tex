@@ -139,12 +139,23 @@
     \begin{enumerate}[label=(\alph*)]
         \item Write the contrapositive of the statement to be proven in English (be sure to explicitly mention any quantifiers). [2 points]
 
-              \begin{tcolorbox}
-                  Answer here
-              \end{tcolorbox}
+            \begin{tcolorbox}
+                 For all perfect squares $x$, if $\sqrt{x}$ is even, then $4$ divides $x$.
+            \end{tcolorbox}
 
         \item Now do the proof; you must use proof by contrapositive for this problem. Be sure to explicitly mention your proof technique! [8 points]
-
+            \begin{tcolorbox}
+                Proof by contrapositive: \\
+                Suppose that $x$ is an arbitrary perfect square. By the definition of perfect square, $\sqrt{x}$ is an integer. Suppose
+                that $\sqrt{x}$ is even.\\
+                By the definition of even numbers, there exists an integer $k$ such that $\sqrt{x} = 2k$. By squaring both sides, we can get: 
+                $x = (2k)^2 = 4k^2$. \\
+                Since $k$ is an integer, by the closure of integer, $k^2$ is also an integer. Thus, there exists an integer $k^2$, such that 
+                $x = 4(k^2)$. Thus, by the definition of divides, $4|x$. \\
+                Contrapositive statement Proved. \\ \\
+                Since the contrapositive statement is true, the original statement, which is ``For all perfect squares $x$ (i.e., $x$ such that $\sqrt{x}$ is an integer): if $4$ does not divide $x$ then $\sqrt{x}$ is odd.''
+                is true.
+            \end{tcolorbox}
     \end{enumerate}
 \end{question}
 
@@ -174,7 +185,7 @@
               \textbf{Hint:} Remember that we had two equivalent definitions of antisymmetry. The definition $\forall x \forall y ( [(x,y)\in R \land (y,x)\in R] \rightarrow x=y)$ is probably going to give you a cleaner proof than the other definition in this problem.
 
               \textbf{Hint:} Please, when introducing a set, also name its elements. E.g. when you introduce $X$ also let $X=\{x_1,x_2\}$ for integers $x_1,x_2$, with $x_1 < x_2$. Your proof will be much easier to read and write this way.
-
+        
         \item Convince yourself that $\succeq$ is a partial order on $\mathcal{A}$ (you just showed antisymmetry; you should convince yourself of reflextivity and transitivity). You do not have to write anything for this part [0 point]
     \end{enumerate}
 \end{question}
