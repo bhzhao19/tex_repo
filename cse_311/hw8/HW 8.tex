@@ -223,15 +223,38 @@
 
     \begin{enumerate}[label=(\alph*)]
         \item Define \texttt{COUSIN-PRIME(x)} in predicate logic by translating the formal definition above. Let your domain of discourse be integers, and let \texttt{PRIME(p)} be the predicate which is true iff $p$ is prime. You may use standard arithmetic notation (including $+,-, =, \leq,$ etc.) in all parts of this problem [2 points]
-
+        \begin{tcolorbox}
+            \texttt{COUSIN-PRIME(x)} will be: \\
+            $\exists y (\texttt{PRIME(x)}\land \texttt{PRIME(y)} \land (y-x = 4 \lor x-y = 4))$
+        \end{tcolorbox}
         \item The \textbf{cousin prime conjecture} states that there are infinitely many cousin primes (it is not known to the 311 staff if the conjecture is true)\footnote{Showing infinite number of primes that differ by about 600 has been shown; we're willing to offer extra credit to anyone who can show the cousin prime conjecture. We'd also happily write and publish the paper with you.}. We can rephrase the
               conjecture as follows: For any integer $N$, no matter how large, there always exists
               a cousin prime larger than $N$. Write in predicate logic a proposition which is
               true if and only if the \textbf{cousin prime conjecture} holds. Your answer should use your predicate from part (a). [2 points]
-
+        \begin{tcolorbox}
+            The translation will be: \\
+            $\forall N \exists x (\texttt{COUSIN-PRIME(x)} \land x \geq N)$
+        \end{tcolorbox}
         \item Negate the translation you wrote in part (b). Show your work, but leave your answers as symbols. You don't have to name rules as you use them. Your final answer must have negations applied only to single predicates. You do not need to simplify to ``take advantage of domain restriction.'' [3 points]
-
+        \begin{tcolorbox}
+            The negation will be: \\
+        \begin{align*}
+            & \quad \;\; \neg \forall N \exists x (\texttt{COUSIN-PRIME(x)} \land x \geq N)  \\ & \equiv \exists N \forall x(\neg (\texttt{COUSIN-PRIME(x)} \land x \geq N)) 
+                                                                                                && \text {Change quantifiers} \\
+                                                                               & \equiv \exists N \forall x(\neg \texttt{COUSIN-PRIME(x)} \lor \neg (x \geq N)) 
+                                                                                                && \text {DeMorgan's law} \\
+                                                                               & \equiv \exists N \forall x(\neg \texttt{COUSIN-PRIME(x)} \lor x < N) 
+                                                                                                && \text {Change inequality}\\ 
+                                                                               & \equiv \exists N \forall x(\texttt{COUSIN-PRIME(x)} \longrightarrow x < N) 
+                                                                                                && \text {Equivalence between or and implication}\\ 
+        \end{align*}
+        \end{tcolorbox} 
+        \newpage
         \item Translate your answer from (c) into English. You may \textbf{NOT} use the words \textit{finite} or \textit{infinite} or any variation of them. [3 points]
+        \begin{tcolorbox}
+            The translation will be: \\
+            There exists an integer $N$, such that for all cousin prime $x$, $x$ is smaller than $N$.
+        \end{tcolorbox}
     \end{enumerate}
 \end{question}
 
@@ -242,17 +265,38 @@
 
     \begin{enumerate}[label=(\alph*)]
         \item Translate the claim above into predicate logic. Let your domain of discourse be all real numbers. Use the predicate $\pred{R}(x)$ for "$x$ is rational". (note that ``$x$ is irrational'' is $\neg \pred{R}(x)$, so you don't need another predicate; you can use $-$ for subtraction).
-
+        \begin{tcolorbox}
+            $\forall x \forall y ((R(x) \land \neg R(y))\longrightarrow \neg R(y-x))$
+        \end{tcolorbox}
         \item Write the negation of the claim above in predicate logic.
-
+        \begin{tcolorbox}
+            The negation will be: \\
+            $\exists x \exists y (R(x) \land \neg R(y) \and R(y-x))$
+        \end{tcolorbox}
         \item Now, write an (English) proof of the claim. You must use proof by contradiction for this problem.
+        \begin{tcolorbox}
+            Proof by contradiction: \\
+            Assume that there exists a rational number $x$ and an irrational number $y$, and $y-x$ is a rational number. \\
+            By the definition of rational numbers, there exists integer $a,b,c,d$, such that $a,b$ are co-prime to each other, and $c,d$ are co-prime to each other, and $x = \frac{a}{b}$, $y-x = \frac{c}{d}$. \\
+            Thus, the number $y$ can be expressed as $(y-x) + x$, which will be:
+            \begin{align*}
+                y &= (y-x) + x && \text{Algebra} \\
+                &= \frac{c}{d} - \frac{a}{b} && \text{Substituting} \\
+                &= \frac{cb - ad}{bd} && \text{Algebra} 
+            \end{align*}
+            Since as we supposed, $a,b,c,d$ are integers, and by the closure of integer, $cb - ad$ is an integer, and $bd$ is an integer. \\
+            For the reason that $y$ can be written in the form of a fraction, where its numerator and denominator are all integers, by the definition of rational number, $y$ will be a 
+            rational number. However, in our assumption, $y$ is an irrational number. Contradicts. \\ \\
+            Thus, our assumption must be false, which means that ``there exists a rational number $x$ and an irrational number $y$, and $y-x$ is a rational number'' is false. Thus, the claim 
+            ``Subtracting a rational number from an irrational number always gives an irrational number'' will be true. Proved.
+        \end{tcolorbox}
     \end{enumerate}
 \end{question}
 
 \begin{question}{Prove a language is not regular [15 points]}
     \emph{This problem uses the technique from Monday's lecture. You can look ahead at the slides or wait until Monday.}
 
-    Prove that the following language is not regular: The set of all strings over $\{0, 1, 2\}$ of the form $x2y$, with $x, y \in \{0, 1\}^*$ and $y$ is the reversal of $x$.
+    Prove that the following language is not regular: The set of all strings named ``L'' over $\{0, 1, 2\}$ of the form $x2y$, with $x, y \in \{0, 1\}^*$ and $y$ is the reversal of $x$.
 
     The ``reversal'' of a string, is the string going from right-to-left (instead of left-to-right). For example
     \begin{itemize}
@@ -262,7 +306,18 @@
         \item 0002000 is in the language.
         \item 000200 is not in the language.
     \end{itemize}
+    \begin{tcolorbox}
+        Claim: in the set of all strings over $\{0, 1, 2\}$ of the form $x2y$ with $x, y \in \{0, 1\}^*$ and $y$ is the reversal of $x$, is an irregular language. \\
+        Suppose, for the sake of contradiction, that the language L is regular. Then, there is a DFA $M$ such that $M$ accepts exactly language L. \\
+        Suppose $S = {1^k2 : k\geq 0}$. \\
+        Due to the reason that the DFA is finite, there exists two different strings, $x,y$ in $S$ such that $x$ and $y$ goes to the same state. Since both $x$ and $y$ are 
+        in $S$, $x = 1^a2$ for some integer $a$, and $y = 1^b2$ for some integer $b$, with $a\neq b$. \\
+        Consider the string $z = 1^a$. $xz = 1^a21^a\in L$, but $yz = 1^b21^a \not\in L$. \\
+        Since $x$,$y$both end up in the same state, and we appended the same $z$, both $xz$ and $yz$ end up in the same state of $M$. \\
+        Since $xz\in L$ and $yz \not\in L$, $M$ does not recognize the language $L$. But in our assumption, we assume that there is a DFA $M$ such that $M$ accepts exactly language L. Contradicts. \\ \\
+        So the language $L$: the set of all strings over $\{0, 1, 2\}$ of the form $x2y$ with $x, y \in \{0, 1\}^*$ and $y$ is the reversal of $x$, is an irregular language.
 
+     \end{tcolorbox}
 \end{question}
 
 \begin{question}{Extra Credit: Going Back to the Well [0 point]}

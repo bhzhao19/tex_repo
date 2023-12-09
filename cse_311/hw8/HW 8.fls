@@ -435,6 +435,8 @@ INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/ot1lmtt.fd
 INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/ot1lmtt.fd
 INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/ot1lmtt.fd
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmtt10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmtt8.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmtt8.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmr9.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmr5.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/lmmi9.tfm
@@ -445,10 +447,8 @@ INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
-INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmri10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc
-INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmtt8.tfm
-INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmtt8.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/rm-lmri10.tfm
 INPUT HW 8.aux
 INPUT ./HW 8.out
 INPUT ./HW 8.out
