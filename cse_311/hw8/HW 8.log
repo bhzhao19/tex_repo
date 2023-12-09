@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.17)  8 DEC 2023 21:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.17)  8 DEC 2023 21:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -895,15 +895,15 @@ Package rerunfilecheck Info: File `"HW 8".out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 49958 strings out of 475459
- 1189171 string characters out of 5778509
- 1939558 words of memory out of 5000000
- 71352 multiletter control sequences out of 15000+600000
- 598285 words of font info for 124 fonts, out of 8000000 for 9000
+ 49961 strings out of 475459
+ 1189212 string characters out of 5778509
+ 1938558 words of memory out of 5000000
+ 71353 multiletter control sequences out of 15000+600000
+ 598368 words of font info for 125 fonts, out of 8000000 for 9000
  357 hyphenation exceptions out of 8191
  99i,15n,101p,1032b,638s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "HW 8.pdf" (10 pages, 283241 bytes).
+Output written on "HW 8.pdf" (10 pages, 284382 bytes).
 PDF statistics:
  186 PDF objects out of 1000 (max. 8388607)
  119 compressed objects within 2 object streams
