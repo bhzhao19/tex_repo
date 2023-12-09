@@ -1,8 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1701551937 "e:/repo/tex_repo/cse_311/hw8/HW 8.tex" "HW 8.pdf" "HW 8" 1701551939 0
-  "HW 8.aux" 1701551939 162 8041607b76d73e3dcbdb7e912bad98fd "pdflatex"
-  "HW 8.out" 1701551938 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "HW 8.tex" 1701551876 13346 d3db44f5261e1e17266485d7f3074f2b ""
+["pdflatex"] 1702036276 "e:/repo/tex_repo/cse_311/hw8/HW 8.tex" "HW 8.pdf" "HW 8" 1702036277 0
+  "HW 8.aux" 1702036277 162 afb4ef04385f9e3622d558f5dc6a25fe "pdflatex"
+  "HW 8.out" 1702036277 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "HW 8.tex" 1702036275 16638 6ab3d21850a243715e1702d9f0f0020e ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1700249212 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc" 1700249212 2840 216e6e45ad352e2456e1149f28885bee ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc" 1700249212 2327 9d6df24f9c4f7368395224341a95523a ""
@@ -269,7 +269,7 @@
   "c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1700251409 4696662 412ed6848e763bbf56b8c01ece3763e4 ""
   "c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1700251474 7483438 e04f8a2738465b7e4bd7c84132c91074 ""
   "c:/texlive/2023/texmf.cnf" 1700251399 713 e69b156964470283e0530f5060668171 ""
-  "e:/repo/tex_repo/cse_311/hw8/HW 8.tex" 1701551876 13346 d3db44f5261e1e17266485d7f3074f2b ""
+  "e:/repo/tex_repo/cse_311/hw8/HW 8.tex" 1702036275 16638 6ab3d21850a243715e1702d9f0f0020e ""
   (generated)
   "HW 8.aux"
   "HW 8.log"

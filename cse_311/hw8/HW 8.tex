@@ -185,7 +185,25 @@
               \textbf{Hint:} Remember that we had two equivalent definitions of antisymmetry. The definition $\forall x \forall y ( [(x,y)\in R \land (y,x)\in R] \rightarrow x=y)$ is probably going to give you a cleaner proof than the other definition in this problem.
 
               \textbf{Hint:} Please, when introducing a set, also name its elements. E.g. when you introduce $X$ also let $X=\{x_1,x_2\}$ for integers $x_1,x_2$, with $x_1 < x_2$. Your proof will be much easier to read and write this way.
-        
+        \begin{tcolorbox}
+            Suppose that the relation set: \\
+            $R_{\succeq}$ = $\{(X,Y):X = \{x_1,x_2\}\in \mathcal{A} , Y= \{y_1,y_2\} \in \mathcal{A}, x_1 < x_2, y_1 < y_2, x_1 \geq y_1 , x_2 \geq y_2\}$. \\
+            Then, by the definition of antisymmetric relationship, the thing we need to prove will be: \\
+            $\forall X \forall Y ( [(X,Y)\in R_{\succeq} \land (Y,X)\in R_{\succeq}] \rightarrow X=Y)$. \\ \\
+            Suppose that $X = \{x_1,x_2\}$ for integers $x_1,x_2$, with $x_1 < x_2$ and $Y= \{y_1,y_2\}$ for integers $y_1,y_2$, with $y_1 < y_2$ are two arbitrary sets in the set $\mathcal{A}$. And $(X,Y)\in R_{\succeq}$ , $(Y,X)\in R_{\succeq}$,
+            which means that $X\succeq Y$ and $Y\succeq X$. \\ \\
+            By the definition of relation $\succeq$, from $X\succeq Y$ we can know that $x_1 \geq y_1$ and $x_2 \geq y_2$. Similarly, from $Y\succeq X$ we can know that
+            $y_1 \geq x_1$ and $y_2 \geq x_2$. \\ \\
+            Since $x_1 \geq y_1$ and $y_1 \geq x_1$, the only possible to satisfied both inequality is that $x_1 = y_1$. Similarly, since $x_2 \geq y_2$ and $y_2 \geq x_2$,
+            the only possible to satisfied both inequality is that $x_2 = y_2$. Thus, we know that $x_1 = y_1$, $x_2 = y_2$. \\ \\
+            To prove sets $X = Y$, we need to prove that $X \subseteq Y$ and $Y \subseteq X$. \\ \\
+            Firstly: prove $X \subseteq Y$. There are only two elements, $x_1,x_2\in X$. Since $x_1 = y_1$, $x_1\in Y$; and since $x_2 = y_2$, $x_2\in Y$. Thus, for the reason that
+            all elements in $X$ is also in $Y$, by the definition of subset, $X \subseteq Y$. \\
+            Secondly: prove $Y \subseteq X$. There are only two elements, $y_1,y_2\in Y$. Since $x_1 = y_1$, $y_1\in X$; and since $x_2 = y_2$, $y_2\in X$. Thus, for the reason that
+            all elements in $Y$ is also in $X$, by the definition of subset, $Y \subseteq X$. \\ \\
+            Thus, since $X \subseteq Y$ and $Y \subseteq X$, $X = Y$. \\ \\
+            Proved that the relation is antisymmetric, since the statement $\forall X \forall Y ( [(X,Y)\in R_{\succeq} \land (Y,X)\in R_{\succeq}] \rightarrow X=Y)$ is true.
+        \end{tcolorbox}
         \item Convince yourself that $\succeq$ is a partial order on $\mathcal{A}$ (you just showed antisymmetry; you should convince yourself of reflextivity and transitivity). You do not have to write anything for this part [0 point]
     \end{enumerate}
 \end{question}
